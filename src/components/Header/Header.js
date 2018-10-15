@@ -19,7 +19,7 @@ class Header extends Component {
     }  
 
     submitHandler = e => {
-        // e.preventDefault()
+        e.preventDefault()
         this.props.history.push(`/tag/${this.state.tag}`)
     }
 
