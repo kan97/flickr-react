@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JustifiedGallery from './../JustifiedGallery/JustifiedGallery'
+import JustifiedGallery from './../../containers/JustifiedGallery/JustifiedGallery'
 
 class Explore extends Component {
   render() {

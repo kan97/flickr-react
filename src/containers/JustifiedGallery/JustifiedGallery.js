@@ -4,14 +4,18 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux'
 
 // components
-import Spinner from './../Spinner/Spinner'
-import PhotoItem from './../PhotoItem/PhotoItem'
+import Spinner from './../../components/Spinner/Spinner'
+import PhotoItem from './../../components/PhotoItem/PhotoItem'
 
 // stylesheets
 import './../../stylesheets/HoverEffect/Julia.css'
 import './JustifiedGallery.css'
 
-import { actFetchPhotosRequest, actResetPhotos } from './../../actions'
+import { 
+  actFetchPhotosRequest, 
+  actResetPhotos,
+  actSetTag
+} from './../../actions'
 
 class JustifiedGallery extends Component {
   constructor(props) {
@@ -31,18 +35,29 @@ class JustifiedGallery extends Component {
     this.props.fetchPhotos(this.props.nextPage, this.props.tag)
   }
   
+  // this function is used for refreshing infinite scroll when moving from one place to another
   componentDidMount() {
     if (this.props.tag !== this.props.tag_search) {
-      this.props.resetPhotos(this.props.tag)
+      this.props.resetPhotos()
+      this.props.setTag(this.props.tag)
     }
   }
   
-  componentDidUpdate() {
-    if (this.props.tag !== this.props.tag_search) {
-      this.props.resetPhotos(this.props.tag)
+  // 2 update function are used for refreshing infinite scroll when changing tag search
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (this.props.tag !== prevProps.tag) {
+      return this.props.tag
     }
+    return null
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot) {
+      this.props.resetPhotos()
+      this.props.setTag(snapshot)
+    }
+  }
+  
   render() {
     const loader = <Spinner />
 
@@ -64,12 +79,13 @@ class JustifiedGallery extends Component {
 const mapStateToProps = state => ({
   nextPage: state.photos.nextPage,
   images: state.photos.images,
-  tag_search: state.photos.tag
+  tag_search: state.tags.tag
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchPhotos: (nextPage, tag) => dispatch(actFetchPhotosRequest(nextPage, tag)),
-  resetPhotos: tag => dispatch(actResetPhotos(tag))
+  resetPhotos: () => dispatch(actResetPhotos()),
+  setTag: tag => dispatch(actSetTag(tag))
 })
 
 export default connect(

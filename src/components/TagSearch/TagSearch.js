@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router'
-import JustifiedGallery from './../JustifiedGallery/JustifiedGallery'
+import JustifiedGallery from './../../containers/JustifiedGallery/JustifiedGallery'
 
 class TagSearch extends Component {
   render() {

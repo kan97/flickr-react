@@ -2,8 +2,7 @@ import * as Types from './../constants/ActionTypes'
 
 const initialState = {
   nextPage: 1,
-  images: [],
-  tag: ''
+  images: []
 }
 
 const photos = (state = initialState, action) => {
@@ -12,15 +11,13 @@ const photos = (state = initialState, action) => {
       return {
         ...state,
         nextPage: state.nextPage + 1,
-        images: [...state.images, ...action.images],
-        tag: action.tag
+        images: [...state.images, ...action.images]
       }
     case Types.RESET_PHOTOS:
       return {
         ...state,
         nextPage: 1,
-        images: [],
-        tag: action.tag
+        images: []
       }
     default:
       return state;

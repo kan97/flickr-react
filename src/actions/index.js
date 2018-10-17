@@ -17,9 +17,15 @@ export const actFetchPhotos = (images, tag) => {
     }
 }
 
-export const actResetPhotos = tag => {
+export const actResetPhotos = () => {
     return {
         type: Types.RESET_PHOTOS,
+    }
+}
+
+export const actSetTag = tag => {
+    return {
+        type: Types.SET_TAG,
         tag
     }
 }
