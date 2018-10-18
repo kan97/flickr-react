@@ -1,0 +1,177 @@
+/* normal */
+.right {
+    position: absolute;
+    padding-top: 20px;
+    right: 50px;
+    width: 360px;
+    height: 80px;
+    box-sizing: border-box;
+    background: url('9A9DA0.png');
+    background-position-x: -1360px;
+    background-repeat: no-repeat;
+}
+
+.input {
+    position: absolute;
+    border: none;
+    border-bottom: 4px solid #fff;
+    margin-top: 2px;
+    right: 60px;
+    width: 0;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    background: inherit;
+    visibility: hidden;
+}
+
+.temp {
+    position: absolute;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    outline: none;
+    background: none;
+}
+
+.start {
+    position: absolute;
+    border: none;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+    background: none;
+}
+
+.start::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 25px;
+    right: -6px;
+    bottom: -16px;
+    background: #fff;
+    transform: rotate(-45deg);
+}
+
+.start:focus {
+    outline: none;
+}
+
+.end {
+    position: absolute;
+    border: none;
+    right: 14px;
+    color: #fff;
+    font-size: 30px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    visibility: hidden;
+}
+
+.submit {
+    margin-left: 14px;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    visibility: hidden;
+}
+
+.submit:focus {
+    outline: none;
+}
+
+/* forward */
+.right-forward {
+    background-position-x: 0;
+    transition: all 2s ease-in-out 1.8s;
+}
+
+.input-forward {
+    width: 230px;
+    visibility: visible;
+    transition: all .6s ease-in-out 1.2s;
+}
+
+.temp-forward {
+    transform: skew(45deg, 45deg) scale(0.5, 0.5);
+    transition: .6s ease-in-out;
+}
+
+.start-forward {
+    visibility: hidden;
+    transition: all .1s ease-in-out 2.4s;
+}
+
+.start-forward::before {
+    right: 28px;
+    bottom: 0;
+    height: 60px;
+    transform: rotate(90deg);
+    transition: height .3s ease-in-out, 
+                bottom .3s ease-in-out, 
+                right .3s ease-in-out, 
+                transform .3s ease-in-out .6s;
+}
+
+.end-forward {
+    visibility: visible;
+    transition: all .1s ease-in-out 2.5s;
+}
+
+.submit-forward {
+    visibility: visible;
+    transition: all .1s ease-in-out 1.9s;
+}
+
+/* backward */
+.right-backward {
+    background-position-x: -1360px;
+    transition: all .8s ease-in-out;
+}
+
+.input-backward {
+    width: 0;
+    visibility: hidden;
+    transition: all .6s ease-in-out .8s;
+}
+
+.temp-backward {
+    transform: skew(0, 0) scale(1, 1);
+    transition: all .6s ease-in-out 1.4s;
+}
+
+.start-backward {
+    visibility: visible;
+    transition: all .2s ease-in-out .4s;
+}
+
+.start-backward:before {
+    right: -6px;
+    bottom: -16px;
+    height: 25px;
+    transform: rotate(-45deg);
+    transition: height .6s ease-in-out 1.8s, 
+                bottom .6s ease-in-out 1.8s, 
+                right .6s ease-in-out 1.8s, 
+                transform .6s ease-in-out 1.4s;
+}
+
+.end-backward {
+    visibility: hidden;
+}
+
+.submit-backward {
+    visibility: hidden;
+    transition: all .2s ease-in-out .6s;
+}

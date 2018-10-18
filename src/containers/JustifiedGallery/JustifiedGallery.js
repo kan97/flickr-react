@@ -37,9 +37,16 @@ class JustifiedGallery extends Component {
   
   // this function is used for refreshing infinite scroll when moving from one place to another
   componentDidMount() {
-    if (this.props.tag !== this.props.tag_search) {
+    const { tag } = this.props
+    if (tag !== this.props.tag_search) {
       this.props.resetPhotos()
-      this.props.setTag(this.props.tag)
+      this.props.setTag(tag)
+    }
+
+    if (tag === '') {
+      document.title = 'Explore | Flickr'
+    } else {
+      document.title = `Search: ${tag} | Flickr`
     }
   }
   

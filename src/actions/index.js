@@ -9,7 +9,7 @@ export const actFetchPhotosRequest = (nextPage, tag) => {
     }
 }
 
-export const actFetchPhotos = (images, tag) => {
+const actFetchPhotos = (images, tag) => {
     return {
         type: Types.FETCH_PHOTOS,
         images,

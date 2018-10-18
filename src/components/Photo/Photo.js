@@ -1,8 +1,13 @@
+// node_modules
 import React, { Component } from 'react';
 import { withRouter } from 'react-router'
-import {getPhotoInfo} from './../../utils/callAPI'
+
+// components
 import PhotoInfo from './../PhotoInfo/PhotoInfo'
 import PhotoComment from './../PhotoComment/PhotoComment'
+
+// utils
+import {getPhotoInfo} from './../../utils/callAPI'
 
 class Photo extends Component {
     constructor(props) {
@@ -16,6 +21,12 @@ class Photo extends Component {
         const {photo_id} = this.props.match.params
         const photo = await getPhotoInfo(photo_id)    
         this.setState({photo})
+    }
+
+    componentDidUpdate() {
+        if (this.state.photo) {
+            document.title = `${this.state.photo.owner_name} | ${this.state.photo.title} | Flickr`
+        }
     }
 
     render() {
