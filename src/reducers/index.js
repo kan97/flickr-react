@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import photos from "./photos";
-import tags from './tag'
+import tags from './tags'
 
 export default combineReducers({
   photos,
